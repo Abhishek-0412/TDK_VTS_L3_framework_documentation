@@ -62,10 +62,10 @@ Verify that `PLAT_DS_INIT()` initializes the Deep Sleep Manager successfully and
 
 | Step Name | Description | Expected Result |
 | --- | --- | --- |
-| Initialize | Call `PLAT_DS_INIT()` | Returns `DEEPSLEEPMGR_SUCCESS` |
-| Terminate | Call `PLAT_DS_TERM()` | Returns `DEEPSLEEPMGR_SUCCESS` |
-| Re-Initialize | Call `PLAT_DS_INIT()` again | Returns `DEEPSLEEPMGR_SUCCESS` |
-| Re-Terminate | Call `PLAT_DS_TERM()` again | Returns `DEEPSLEEPMGR_SUCCESS` |
+| Initialize the Deep Sleep Management module | Invoke `PLAT_DS_INIT()` | `PLAT_DS_INIT()` must return `DEEPSLEEPMGR_SUCCESS` |
+| Terminate the Deep Sleep Management module | Invoke `PLAT_DS_TERM()` | `PLAT_DS_TERM()` must return `DEEPSLEEPMGR_SUCCESS` |
+| Re-initialize the Deep Sleep Management module | Invoke `PLAT_DS_INIT()` again | `PLAT_DS_INIT()` must return `DEEPSLEEPMGR_SUCCESS` |
+| Re-terminate the Deep Sleep Management module | Invoke `PLAT_DS_TERM()` again | `PLAT_DS_TERM()` must return `DEEPSLEEPMGR_SUCCESS` |
 
 ---
 
@@ -83,9 +83,9 @@ Verify that calling `PLAT_DS_INIT()` when the module is already initialized retu
 
 | Step Name | Description | Expected Result |
 | --- | --- | --- |
-| Initialize | Call `PLAT_DS_INIT()` | Returns `DEEPSLEEPMGR_SUCCESS` |
-| Double Initialize | Call `PLAT_DS_INIT()` again while already initialized | Returns `DEEPSLEEPMGR_ALREADY_INITIALIZED` |
-| Terminate | Call `PLAT_DS_TERM()` | Returns `DEEPSLEEPMGR_SUCCESS` |
+| Initialize the Deep Sleep Management module | Invoke `PLAT_DS_INIT()` | `PLAT_DS_INIT()` must return `DEEPSLEEPMGR_SUCCESS` |
+| Initialize again while module is already initialized | Invoke `PLAT_DS_INIT()` again while module is already initialized | `PLAT_DS_INIT()` must return `DEEPSLEEPMGR_ALREADY_INITIALIZED` |
+| Terminate the Deep Sleep Management module | Invoke `PLAT_DS_TERM()` | `PLAT_DS_TERM()` must return `DEEPSLEEPMGR_SUCCESS` |
 
 ---
 
@@ -103,8 +103,8 @@ Verify that `PLAT_DS_TERM()` terminates the Deep Sleep Manager successfully afte
 
 | Step Name | Description | Expected Result |
 | --- | --- | --- |
-| Initialize | Call `PLAT_DS_INIT()` | Returns `DEEPSLEEPMGR_SUCCESS` |
-| Terminate | Call `PLAT_DS_TERM()` | Returns `DEEPSLEEPMGR_SUCCESS` |
+| Initialize the Deep Sleep Management module | Invoke `PLAT_DS_INIT()` | `PLAT_DS_INIT()` must return `DEEPSLEEPMGR_SUCCESS` |
+| Terminate the Deep Sleep Management module | Invoke `PLAT_DS_TERM()` | `PLAT_DS_TERM()` must return `DEEPSLEEPMGR_SUCCESS` |
 
 ---
 
@@ -122,10 +122,10 @@ Verify that `PLAT_DS_TERM()` returns `DEEPSLEEPMGR_NOT_INITIALIZED` when called 
 
 | Step Name | Description | Expected Result |
 | --- | --- | --- |
-| Terminate Without Init | Call `PLAT_DS_TERM()` before any `PLAT_DS_INIT()` | Returns `DEEPSLEEPMGR_NOT_INITIALIZED` |
-| Initialize | Call `PLAT_DS_INIT()` | Returns `DEEPSLEEPMGR_SUCCESS` |
-| Terminate | Call `PLAT_DS_TERM()` | Returns `DEEPSLEEPMGR_SUCCESS` |
-| Double Terminate | Call `PLAT_DS_TERM()` again after already terminated | Returns `DEEPSLEEPMGR_NOT_INITIALIZED` |
+| Terminate the module without prior initialization | Invoke `PLAT_DS_TERM()` before any `PLAT_DS_INIT()` | `PLAT_DS_TERM()` must return `DEEPSLEEPMGR_NOT_INITIALIZED` |
+| Initialize the Deep Sleep Management module | Invoke `PLAT_DS_INIT()` | `PLAT_DS_INIT()` must return `DEEPSLEEPMGR_SUCCESS` |
+| Terminate the Deep Sleep Management module | Invoke `PLAT_DS_TERM()` | `PLAT_DS_TERM()` must return `DEEPSLEEPMGR_SUCCESS` |
+| Terminate again after module is already terminated | Invoke `PLAT_DS_TERM()` again after module is already terminated | `PLAT_DS_TERM()` must return `DEEPSLEEPMGR_NOT_INITIALIZED` |
 
 ---
 
@@ -145,9 +145,9 @@ Verify that `PLAT_DS_DeepSleepWakeup()` completes post-wakeup processing success
 
 | Step Name | Description | Expected Result |
 | --- | --- | --- |
-| Initialize | Call `PLAT_DS_INIT()` | Returns `DEEPSLEEPMGR_SUCCESS` |
-| Trigger Wakeup Processing | Call `PLAT_DS_DeepSleepWakeup()` | Returns `DEEPSLEEPMGR_SUCCESS` |
-| Terminate | Call `PLAT_DS_TERM()` | Returns `DEEPSLEEPMGR_SUCCESS` |
+| Initialize the Deep Sleep Management module | Invoke `PLAT_DS_INIT()` | `PLAT_DS_INIT()` must return `DEEPSLEEPMGR_SUCCESS` |
+| Configure platform status after deep sleep wake-up | Invoke `PLAT_DS_DeepSleepWakeup()` | `PLAT_DS_DeepSleepWakeup()` must return `DEEPSLEEPMGR_SUCCESS` |
+| Terminate the Deep Sleep Management module | Invoke `PLAT_DS_TERM()` | `PLAT_DS_TERM()` must return `DEEPSLEEPMGR_SUCCESS` |
 
 ---
 
@@ -165,10 +165,10 @@ Verify that `PLAT_DS_DeepSleepWakeup()` returns `DEEPSLEEPMGR_NOT_INITIALIZED` w
 
 | Step Name | Description | Expected Result |
 | --- | --- | --- |
-| Wakeup Before Init | Call `PLAT_DS_DeepSleepWakeup()` without prior `PLAT_DS_INIT()` | Returns `DEEPSLEEPMGR_NOT_INITIALIZED` |
-| Initialize | Call `PLAT_DS_INIT()` | Returns `DEEPSLEEPMGR_SUCCESS` |
-| Terminate | Call `PLAT_DS_TERM()` | Returns `DEEPSLEEPMGR_SUCCESS` |
-| Wakeup After Term | Call `PLAT_DS_DeepSleepWakeup()` after `PLAT_DS_TERM()` | Returns `DEEPSLEEPMGR_NOT_INITIALIZED` |
+| Configure platform wake-up status without prior initialization | Invoke `PLAT_DS_DeepSleepWakeup()` without prior `PLAT_DS_INIT()` | `PLAT_DS_DeepSleepWakeup()` must return `DEEPSLEEPMGR_NOT_INITIALIZED` |
+| Initialize the Deep Sleep Management module | Invoke `PLAT_DS_INIT()` | `PLAT_DS_INIT()` must return `DEEPSLEEPMGR_SUCCESS` |
+| Terminate the Deep Sleep Management module | Invoke `PLAT_DS_TERM()` | `PLAT_DS_TERM()` must return `DEEPSLEEPMGR_SUCCESS` |
+| Configure platform wake-up status after module terminated | Invoke `PLAT_DS_DeepSleepWakeup()` after `PLAT_DS_TERM()` | `PLAT_DS_DeepSleepWakeup()` must return `DEEPSLEEPMGR_NOT_INITIALIZED` |
 
 ---
 
@@ -188,12 +188,12 @@ Verify that `PLAT_DS_SetDeepSleep()` accepts valid timeout and `networkStandby` 
 
 | Step Name | Description | Expected Result |
 | --- | --- | --- |
-| Initialize | Call `PLAT_DS_INIT()` | Returns `DEEPSLEEPMGR_SUCCESS` |
-| Set Deep Sleep (networkStandby=false) | Call `PLAT_DS_SetDeepSleep(deep_sleep_timeout=30, *isGPIOWakeup=false, networkStandby=false)` | Returns `DEEPSLEEPMGR_SUCCESS`; device enters deep sleep |
-| Post-Wakeup (1st) | Call `PLAT_DS_DeepSleepWakeup()` | Returns `DEEPSLEEPMGR_SUCCESS` |
-| Set Deep Sleep (networkStandby=true) | Call `PLAT_DS_SetDeepSleep(deep_sleep_timeout=30, *isGPIOWakeup=false, networkStandby=true)` | Returns `DEEPSLEEPMGR_SUCCESS`; device enters deep sleep with network standby enabled |
-| Post-Wakeup (2nd) | Call `PLAT_DS_DeepSleepWakeup()` | Returns `DEEPSLEEPMGR_SUCCESS` |
-| Terminate | Call `PLAT_DS_TERM()` | Returns `DEEPSLEEPMGR_SUCCESS` |
+| Initialize the Deep Sleep Management module | Invoke `PLAT_DS_INIT()` | `PLAT_DS_INIT()` must return `DEEPSLEEPMGR_SUCCESS` |
+| Set CPE power state to Deep Sleep with network standby disabled | Invoke `PLAT_DS_SetDeepSleep(deep_sleep_timeout=30, *isGPIOWakeup=false, networkStandby=false)` | `PLAT_DS_SetDeepSleep()` must return `DEEPSLEEPMGR_SUCCESS`; device enters deep sleep |
+| Configure platform status after first wake-up | Invoke `PLAT_DS_DeepSleepWakeup()` | `PLAT_DS_DeepSleepWakeup()` must return `DEEPSLEEPMGR_SUCCESS` |
+| Set CPE power state to Deep Sleep with network standby enabled | Invoke `PLAT_DS_SetDeepSleep(deep_sleep_timeout=30, *isGPIOWakeup=false, networkStandby=true)` | `PLAT_DS_SetDeepSleep()` must return `DEEPSLEEPMGR_SUCCESS`; device enters deep sleep with network standby enabled |
+| Configure platform status after second wake-up | Invoke `PLAT_DS_DeepSleepWakeup()` | `PLAT_DS_DeepSleepWakeup()` must return `DEEPSLEEPMGR_SUCCESS` |
+| Terminate the Deep Sleep Management module | Invoke `PLAT_DS_TERM()` | `PLAT_DS_TERM()` must return `DEEPSLEEPMGR_SUCCESS` |
 
 ---
 
@@ -211,12 +211,12 @@ Verify that `PLAT_DS_SetDeepSleep()` returns `DEEPSLEEPMGR_NOT_INITIALIZED` when
 
 | Step Name | Description | Expected Result |
 | --- | --- | --- |
-| Call Before Init | Call `PLAT_DS_SetDeepSleep(deep_sleep_timeout=60, *isGPIOWakeup=false, networkStandby=false)` without prior `PLAT_DS_INIT()` | Returns `DEEPSLEEPMGR_NOT_INITIALIZED` |
-| Initialize | Call `PLAT_DS_INIT()` | Returns `DEEPSLEEPMGR_SUCCESS` |
-| Null Pointer for isGPIOWakeup | Call `PLAT_DS_SetDeepSleep(deep_sleep_timeout=30, isGPIOWakeup=NULL, networkStandby=false)` | Returns `DEEPSLEEPMGR_INVALID_ARGUMENT` |
-| Out-of-Range Timeout | Call `PLAT_DS_SetDeepSleep(deep_sleep_timeout=604801, *isGPIOWakeup=false, networkStandby=false)` — max valid value is 604800 | Returns `DEEPSLEEPMGR_INVALID_ARGUMENT` |
-| Terminate | Call `PLAT_DS_TERM()` | Returns `DEEPSLEEPMGR_SUCCESS` |
-| Call After Term | Call `PLAT_DS_SetDeepSleep(deep_sleep_timeout=60, *isGPIOWakeup=false, networkStandby=false)` after `PLAT_DS_TERM()` | Returns `DEEPSLEEPMGR_NOT_INITIALIZED` |
+| Set CPE power state to Deep Sleep without prior initialization | Invoke `PLAT_DS_SetDeepSleep(deep_sleep_timeout=60, *isGPIOWakeup=false, networkStandby=false)` without prior `PLAT_DS_INIT()` | `PLAT_DS_SetDeepSleep()` must return `DEEPSLEEPMGR_NOT_INITIALIZED` |
+| Initialize the Deep Sleep Management module | Invoke `PLAT_DS_INIT()` | `PLAT_DS_INIT()` must return `DEEPSLEEPMGR_SUCCESS` |
+| Set CPE power state with NULL isGPIOWakeup output pointer | Invoke `PLAT_DS_SetDeepSleep(deep_sleep_timeout=30, isGPIOWakeup=NULL, networkStandby=false)` | `PLAT_DS_SetDeepSleep()` must return `DEEPSLEEPMGR_INVALID_ARGUMENT` |
+| Set CPE power state with out-of-range timeout | Invoke `PLAT_DS_SetDeepSleep(deep_sleep_timeout=604801, *isGPIOWakeup=false, networkStandby=false)` — max valid timeout is 604800 seconds | `PLAT_DS_SetDeepSleep()` must return `DEEPSLEEPMGR_INVALID_ARGUMENT` |
+| Terminate the Deep Sleep Management module | Invoke `PLAT_DS_TERM()` | `PLAT_DS_TERM()` must return `DEEPSLEEPMGR_SUCCESS` |
+| Set CPE power state to Deep Sleep after module terminated | Invoke `PLAT_DS_SetDeepSleep(deep_sleep_timeout=60, *isGPIOWakeup=false, networkStandby=false)` after `PLAT_DS_TERM()` | `PLAT_DS_SetDeepSleep()` must return `DEEPSLEEPMGR_NOT_INITIALIZED` |
 
 ---
 
@@ -234,9 +234,9 @@ Verify that `PLAT_DS_GetLastWakeupReason()` retrieves a valid `DeepSleep_WakeupR
 
 | Step Name | Description | Expected Result |
 | --- | --- | --- |
-| Initialize | Call `PLAT_DS_INIT()` | Returns `DEEPSLEEPMGR_SUCCESS` |
-| Get Last Wakeup Reason | Call `PLAT_DS_GetLastWakeupReason(wakeupReason=<valid DeepSleep_WakeupReason_t*>)` | Returns `DEEPSLEEPMGR_SUCCESS`; `wakeupReason` is populated with a valid `DeepSleep_WakeupReason_t` enum value |
-| Terminate | Call `PLAT_DS_TERM()` | Returns `DEEPSLEEPMGR_SUCCESS` |
+| Initialize the Deep Sleep Management module | Invoke `PLAT_DS_INIT()` | `PLAT_DS_INIT()` must return `DEEPSLEEPMGR_SUCCESS` |
+| Get the CPE's last wakeup reason | Invoke `PLAT_DS_GetLastWakeupReason(wakeupReason=<valid DeepSleep_WakeupReason_t*>)` | `PLAT_DS_GetLastWakeupReason()` must return `DEEPSLEEPMGR_SUCCESS`; `wakeupReason` is populated with a valid `DeepSleep_WakeupReason_t` enum value |
+| Terminate the Deep Sleep Management module | Invoke `PLAT_DS_TERM()` | `PLAT_DS_TERM()` must return `DEEPSLEEPMGR_SUCCESS` |
 
 ---
 
@@ -254,11 +254,11 @@ Verify that `PLAT_DS_GetLastWakeupReason()` returns `DEEPSLEEPMGR_NOT_INITIALIZE
 
 | Step Name | Description | Expected Result |
 | --- | --- | --- |
-| Call Without Init | Call `PLAT_DS_GetLastWakeupReason(wakeupReason=<valid DeepSleep_WakeupReason_t*>)` without prior `PLAT_DS_INIT()` | Returns `DEEPSLEEPMGR_NOT_INITIALIZED` |
-| Initialize | Call `PLAT_DS_INIT()` | Returns `DEEPSLEEPMGR_SUCCESS` |
-| Null Output Pointer | Call `PLAT_DS_GetLastWakeupReason(wakeupReason=NULL)` | Returns `DEEPSLEEPMGR_INVALID_ARGUMENT` |
-| Terminate | Call `PLAT_DS_TERM()` | Returns `DEEPSLEEPMGR_SUCCESS` |
-| Call After Term | Call `PLAT_DS_GetLastWakeupReason(wakeupReason=<valid DeepSleep_WakeupReason_t*>)` after `PLAT_DS_TERM()` | Returns `DEEPSLEEPMGR_NOT_INITIALIZED` |
+| Get last wakeup reason without prior initialization | Invoke `PLAT_DS_GetLastWakeupReason(wakeupReason=<valid DeepSleep_WakeupReason_t*>)` without prior `PLAT_DS_INIT()` | `PLAT_DS_GetLastWakeupReason()` must return `DEEPSLEEPMGR_NOT_INITIALIZED` |
+| Initialize the Deep Sleep Management module | Invoke `PLAT_DS_INIT()` | `PLAT_DS_INIT()` must return `DEEPSLEEPMGR_SUCCESS` |
+| Get last wakeup reason with NULL output pointer | Invoke `PLAT_DS_GetLastWakeupReason(wakeupReason=NULL)` | `PLAT_DS_GetLastWakeupReason()` must return `DEEPSLEEPMGR_INVALID_ARGUMENT` |
+| Terminate the Deep Sleep Management module | Invoke `PLAT_DS_TERM()` | `PLAT_DS_TERM()` must return `DEEPSLEEPMGR_SUCCESS` |
+| Get last wakeup reason after module terminated | Invoke `PLAT_DS_GetLastWakeupReason(wakeupReason=<valid DeepSleep_WakeupReason_t*>)` after `PLAT_DS_TERM()` | `PLAT_DS_GetLastWakeupReason()` must return `DEEPSLEEPMGR_NOT_INITIALIZED` |
 
 ---
 
@@ -276,9 +276,9 @@ Verify that `PLAT_DS_GetLastWakeupKeyCode()` retrieves a valid `DeepSleepMgr_Wak
 
 | Step Name | Description | Expected Result |
 | --- | --- | --- |
-| Initialize | Call `PLAT_DS_INIT()` | Returns `DEEPSLEEPMGR_SUCCESS` |
-| Get Last Wakeup Key Code | Call `PLAT_DS_GetLastWakeupKeyCode(wakeupKeyCode=<valid DeepSleepMgr_WakeupKeyCode_Param_t*>)` | Returns `DEEPSLEEPMGR_SUCCESS`; `wakeupKeyCode` is populated with the last key code that triggered wakeup |
-| Terminate | Call `PLAT_DS_TERM()` | Returns `DEEPSLEEPMGR_SUCCESS` |
+| Initialize the Deep Sleep Management module | Invoke `PLAT_DS_INIT()` | `PLAT_DS_INIT()` must return `DEEPSLEEPMGR_SUCCESS` |
+| Get the CPE's last wakeup key code | Invoke `PLAT_DS_GetLastWakeupKeyCode(wakeupKeyCode=<valid DeepSleepMgr_WakeupKeyCode_Param_t*>)` | `PLAT_DS_GetLastWakeupKeyCode()` must return `DEEPSLEEPMGR_SUCCESS`; `wakeupKeyCode` is populated with the last key code that triggered wakeup |
+| Terminate the Deep Sleep Management module | Invoke `PLAT_DS_TERM()` | `PLAT_DS_TERM()` must return `DEEPSLEEPMGR_SUCCESS` |
 
 ---
 
@@ -296,11 +296,11 @@ Verify that `PLAT_DS_GetLastWakeupKeyCode()` returns `DEEPSLEEPMGR_NOT_INITIALIZ
 
 | Step Name | Description | Expected Result |
 | --- | --- | --- |
-| Call Without Init | Call `PLAT_DS_GetLastWakeupKeyCode(wakeupKeyCode=<valid DeepSleepMgr_WakeupKeyCode_Param_t*>)` without prior `PLAT_DS_INIT()` | Returns `DEEPSLEEPMGR_NOT_INITIALIZED` |
-| Initialize | Call `PLAT_DS_INIT()` | Returns `DEEPSLEEPMGR_SUCCESS` |
-| Null Output Pointer | Call `PLAT_DS_GetLastWakeupKeyCode(wakeupKeyCode=NULL)` | Returns `DEEPSLEEPMGR_INVALID_ARGUMENT` |
-| Terminate | Call `PLAT_DS_TERM()` | Returns `DEEPSLEEPMGR_SUCCESS` |
-| Call After Term | Call `PLAT_DS_GetLastWakeupKeyCode(wakeupKeyCode=<valid DeepSleepMgr_WakeupKeyCode_Param_t*>)` after `PLAT_DS_TERM()` | Returns `DEEPSLEEPMGR_NOT_INITIALIZED` |
+| Get last wakeup key code without prior initialization | Invoke `PLAT_DS_GetLastWakeupKeyCode(wakeupKeyCode=<valid DeepSleepMgr_WakeupKeyCode_Param_t*>)` without prior `PLAT_DS_INIT()` | `PLAT_DS_GetLastWakeupKeyCode()` must return `DEEPSLEEPMGR_NOT_INITIALIZED` |
+| Initialize the Deep Sleep Management module | Invoke `PLAT_DS_INIT()` | `PLAT_DS_INIT()` must return `DEEPSLEEPMGR_SUCCESS` |
+| Get last wakeup key code with NULL output pointer | Invoke `PLAT_DS_GetLastWakeupKeyCode(wakeupKeyCode=NULL)` | `PLAT_DS_GetLastWakeupKeyCode()` must return `DEEPSLEEPMGR_INVALID_ARGUMENT` |
+| Terminate the Deep Sleep Management module | Invoke `PLAT_DS_TERM()` | `PLAT_DS_TERM()` must return `DEEPSLEEPMGR_SUCCESS` |
+| Get last wakeup key code after module terminated | Invoke `PLAT_DS_GetLastWakeupKeyCode(wakeupKeyCode=<valid DeepSleepMgr_WakeupKeyCode_Param_t*>)` after `PLAT_DS_TERM()` | `PLAT_DS_GetLastWakeupKeyCode()` must return `DEEPSLEEPMGR_NOT_INITIALIZED` |
 
 ---
 
