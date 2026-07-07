@@ -53,7 +53,7 @@ This script executes all **L1 (Component Function)** test cases for the **Deep S
 PLAT_INIT_pos
 
 ### TestCase ID
-DeepSleep_L1_01
+deepSleepMgr L1-1
 
 ### TestCase Objective
 Verify that `PLAT_DS_INIT()` initializes the Deep Sleep Manager successfully and can be called, terminated, and re-initialized in sequence — each call returning `DEEPSLEEPMGR_SUCCESS`.
@@ -74,7 +74,7 @@ Verify that `PLAT_DS_INIT()` initializes the Deep Sleep Manager successfully and
 PLAT_INIT_neg
 
 ### TestCase ID
-DeepSleep_L1_02
+deepSleepMgr L1-2
 
 ### TestCase Objective
 Verify that calling `PLAT_DS_INIT()` when the module is already initialized returns `DEEPSLEEPMGR_ALREADY_INITIALIZED`.
@@ -94,7 +94,7 @@ Verify that calling `PLAT_DS_INIT()` when the module is already initialized retu
 PLAT_TERM_pos
 
 ### TestCase ID
-DeepSleep_L1_03
+deepSleepMgr L1-3
 
 ### TestCase Objective
 Verify that `PLAT_DS_TERM()` terminates the Deep Sleep Manager successfully after a valid initialization and returns `DEEPSLEEPMGR_SUCCESS`.
@@ -113,7 +113,7 @@ Verify that `PLAT_DS_TERM()` terminates the Deep Sleep Manager successfully afte
 PLAT_TERM_neg
 
 ### TestCase ID
-DeepSleep_L1_04
+deepSleepMgr L1-4
 
 ### TestCase Objective
 Verify that `PLAT_DS_TERM()` returns `DEEPSLEEPMGR_NOT_INITIALIZED` when called before initialization or after an already-completed termination.
@@ -134,7 +134,7 @@ Verify that `PLAT_DS_TERM()` returns `DEEPSLEEPMGR_NOT_INITIALIZED` when called 
 PLAT_DeepSleepWakeup_pos
 
 ### TestCase ID
-DeepSleep_L1_05
+deepSleepMgr L1-5
 
 > **Note — Platform Skip:** This test case is **skipped on RPI-Client** — Deep sleep is not applicable for RPI (REFPLTV-2526).
 
@@ -156,7 +156,7 @@ Verify that `PLAT_DS_DeepSleepWakeup()` completes post-wakeup processing success
 PLAT_DeepSleepWakeup_neg
 
 ### TestCase ID
-DeepSleep_L1_06
+deepSleepMgr L1-6
 
 ### TestCase Objective
 Verify that `PLAT_DS_DeepSleepWakeup()` returns `DEEPSLEEPMGR_NOT_INITIALIZED` when called before initialization or after termination.
@@ -177,7 +177,7 @@ Verify that `PLAT_DS_DeepSleepWakeup()` returns `DEEPSLEEPMGR_NOT_INITIALIZED` w
 PLAT_SetDeepSleep_pos
 
 ### TestCase ID
-DeepSleep_L1_07
+deepSleepMgr L1-7
 
 > **Note — Platform Skip:** This test case is **skipped on RPI-Client** — Deep sleep is not applicable for RPI (REFPLTV-2526).
 
@@ -202,7 +202,7 @@ Verify that `PLAT_DS_SetDeepSleep()` accepts valid timeout and `networkStandby` 
 PLAT_SetDeepSleep_neg
 
 ### TestCase ID
-DeepSleep_L1_08
+deepSleepMgr L1-8
 
 ### TestCase Objective
 Verify that `PLAT_DS_SetDeepSleep()` returns `DEEPSLEEPMGR_NOT_INITIALIZED` when called before initialization or after termination, `DEEPSLEEPMGR_INVALID_ARGUMENT` when passed a `NULL` pointer for `isGPIOWakeup` or an out-of-range `deep_sleep_timeout` value (max valid = 604800 seconds).
@@ -225,7 +225,7 @@ Verify that `PLAT_DS_SetDeepSleep()` returns `DEEPSLEEPMGR_NOT_INITIALIZED` when
 PLAT_GetLastWakeupReason_pos
 
 ### TestCase ID
-DeepSleep_L1_09
+deepSleepMgr L1-9
 
 ### TestCase Objective
 Verify that `PLAT_DS_GetLastWakeupReason()` retrieves a valid `DeepSleep_WakeupReason_t` value when called with a valid output pointer after initialization.
@@ -245,7 +245,7 @@ Verify that `PLAT_DS_GetLastWakeupReason()` retrieves a valid `DeepSleep_WakeupR
 PLAT_GetLastWakeupReason_neg
 
 ### TestCase ID
-DeepSleep_L1_10
+deepSleepMgr L1-10
 
 ### TestCase Objective
 Verify that `PLAT_DS_GetLastWakeupReason()` returns `DEEPSLEEPMGR_NOT_INITIALIZED` when called without initialization or after termination, and `DEEPSLEEPMGR_INVALID_ARGUMENT` when passed a `NULL` output pointer.
@@ -267,7 +267,7 @@ Verify that `PLAT_DS_GetLastWakeupReason()` returns `DEEPSLEEPMGR_NOT_INITIALIZE
 PLAT_GetLastWakeupKeyCode_pos
 
 ### TestCase ID
-DeepSleep_L1_11
+deepSleepMgr L1-11
 
 ### TestCase Objective
 Verify that `PLAT_DS_GetLastWakeupKeyCode()` retrieves a valid `DeepSleepMgr_WakeupKeyCode_Param_t` value when called with a valid output pointer after initialization.
@@ -287,7 +287,7 @@ Verify that `PLAT_DS_GetLastWakeupKeyCode()` retrieves a valid `DeepSleepMgr_Wak
 PLAT_GetLastWakeupKeyCode_neg
 
 ### TestCase ID
-DeepSleep_L1_12
+deepSleepMgr L1-12
 
 ### TestCase Objective
 Verify that `PLAT_DS_GetLastWakeupKeyCode()` returns `DEEPSLEEPMGR_NOT_INITIALIZED` when called without initialization or after termination, and `DEEPSLEEPMGR_INVALID_ARGUMENT` when passed a `NULL` output pointer.
